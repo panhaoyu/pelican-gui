@@ -28,20 +28,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def read_articles(self):
         self.pelican.read(local=True)
-        self.articles: typing.List[pelican.contents.Article] = self.pelican.articles_generator.articles
+        self.articles = self.pelican.articles_generator.articles
         self.articles.sort(key=lambda article: -int(article.metadata['permalink']))
-        for index, article in enumerate(self.articles):
-            if article.metadata['gallery']:
-                gallery = f'{article.metadata["storage"]}: {article.metadata["gallery"]}'
-            else:
-                gallery = f'{article.metadata["storage"]}: default'
-            self.tableWidget.insertRow(index)
-            self.tableWidget.setItem(index, 0, QtWidgets.QTableWidgetItem(article.metadata['permalink']))
-            self.tableWidget.setItem(index, 1, QtWidgets.QTableWidgetItem(str(article.metadata['category'])))
-            self.tableWidget.setItem(index, 2, QtWidgets.QTableWidgetItem(article.title))
-            self.tableWidget.setItem(index, 3, QtWidgets.QTableWidgetItem(article.date.strftime("%y-%m-%d")))
-            self.tableWidget.setItem(index, 4, QtWidgets.QTableWidgetItem(gallery))
-            self.tableWidget.setItem(index, 5, QtWidgets.QTableWidgetItem(article.status))
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.clearContents()
+        for row_index, article in enumerate(self.articles):
+            values = settings.get_fields(article)
+            values = [values[header] for header in settings.HEADERS]
+            self.tableWidget.insertRow(row_index)
+            for col_index, value in enumerate(values):
+                item = QtWidgets.QTableWidgetItem(value)
+                self.tableWidget.setItem(row_index, col_index, item)
 
     def edit(self):
         item: typing.List[QtWidgets.QTableWidgetItem] = self.tableWidget.selectedItems()
@@ -68,3 +65,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def upload_photos(self):
         print('upload')
+
+    def get_fields(article: pelican.contents.Article):
+        storage = article.metadata['storage']
+        gallery = article.metadata['gallery'] if article.metadata['gallery'] else 'default'
+        return {
+            '编号': article.metadata['permalink'],
+            '分类': article.metadata['category'],
+            '标题': article.title,
+            '日期': article.date.strftime('%y-%m-%d'),
+            '图片库': f'{storage}:{gallery}',
+            '已发布': article.status,
+        }
