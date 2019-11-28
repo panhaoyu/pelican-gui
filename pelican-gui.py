@@ -9,4 +9,4 @@ def server():
 
 
 threading.Thread(target=server).start()
-webbrowser.get().open('http://localhost/')
+webbrowser.get().open('http://localhost/console/')
