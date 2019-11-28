@@ -1,4 +1,8 @@
 import os
+import typing
+import asyncio
+import itertools
+import functools
 import pelican
 import pelican.settings
 import settings
@@ -7,7 +11,7 @@ import settings
 class Pelican(object):
     def __init__(self, path=settings.PATH):
         self.config_path = path
-        self.articles_generator = None
+        self.articles_generator: typing.Union[pelican.ArticlesGenerator, None] = None
         self.pages_generator = None
         self.static_generator = None
         self.settings = pelican.settings.read_settings(path=self.config_path)
@@ -81,3 +85,10 @@ class Pelican(object):
 
     def deploy(self):
         os.popen(f'git -C {self.pelican.output_path} push -f --set-upstream origin master')
+
+    @property
+    def articles(self):
+        articles = list()
+        articles.extend(self.articles_generator.articles)
+        articles.extend(self.articles_generator.drafts)
+        return articles

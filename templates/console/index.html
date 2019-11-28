@@ -1,0 +1,29 @@
+{% extends 'console/base.html' %}
+{% load static %}
+
+{% block title %}首页{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'console/index.css' %}">
+{% endblock %}
+
+{% block body %}
+    <table class="table text-center">
+        <thead>
+        <tr>
+            {% for header in headers %}
+                <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                {% for cell in article %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
