@@ -1,1 +1,1 @@
-from .reader import Reader
+from .pelican import Pelican

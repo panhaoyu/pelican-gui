@@ -25,5 +25,4 @@ def get_fields(article: pelican.contents.Article):
         '图片库': f'{storage}:{gallery}',
         '已发布': article.status,
     }
-    print(data)
     return data

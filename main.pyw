@@ -1,8 +1,8 @@
 import sys
 from PySide2 import QtWidgets
 import ui
-import core
 
+# 启动程序
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     main_window = ui.MainWindow()

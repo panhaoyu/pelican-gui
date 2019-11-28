@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>927</width>
-    <height>697</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -15,6 +15,18 @@
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>微软雅黑</family>
+    <pointsize>14</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Pelican博客管理器</string>
@@ -28,9 +40,30 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,20">
+     <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,5">
+      <property name="spacing">
+       <number>10</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0,0,0">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QPushButton" name="pushButton_4">
           <property name="text">
@@ -39,23 +72,23 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>编辑博文</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="pushButton_6">
           <property name="text">
-           <string>重新加载</string>
+           <string>读取博文</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="pushButton_9">
           <property name="text">
-           <string>本地预览</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="pushButton_2">
-          <property name="text">
-           <string>部署博客</string>
+           <string>打开照片库</string>
           </property>
          </widget>
         </item>
@@ -67,18 +100,152 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="pushButton_7">
           <property name="text">
-           <string>编辑博文</string>
+           <string>生成网站</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_8">
+          <property name="text">
+           <string>打开文件夹</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>本地预览</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>上传网站</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout" stretch="10">
+       <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
         <item>
-         <widget class="QTableWidget" name="tableWidget"/>
+         <widget class="QTableWidget" name="tableWidget">
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="tabKeyNavigation">
+           <bool>true</bool>
+          </property>
+          <property name="showDropIndicator" stdset="0">
+           <bool>false</bool>
+          </property>
+          <property name="dragEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="dragDropOverwriteMode">
+           <bool>false</bool>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>false</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="showGrid">
+           <bool>false</bool>
+          </property>
+          <property name="gridStyle">
+           <enum>Qt::SolidLine</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <property name="wordWrap">
+           <bool>false</bool>
+          </property>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>编号</string>
+           </property>
+           <property name="textAlignment">
+            <set>AlignCenter</set>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>分类</string>
+           </property>
+           <property name="textAlignment">
+            <set>AlignCenter</set>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>标题</string>
+           </property>
+           <property name="textAlignment">
+            <set>AlignCenter</set>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>日期</string>
+           </property>
+           <property name="textAlignment">
+            <set>AlignCenter</set>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>图片库</string>
+           </property>
+           <property name="textAlignment">
+            <set>AlignCenter</set>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>状态</string>
+           </property>
+           <property name="textAlignment">
+            <set>AlignCenter</set>
+           </property>
+          </column>
+         </widget>
         </item>
        </layout>
       </item>
@@ -87,6 +254,9 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>tableWidget</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -96,12 +266,12 @@
    <slot>create_article()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>31</y>
+     <x>64</x>
+     <y>25</y>
     </hint>
     <hint type="destinationlabel">
      <x>80</x>
-     <y>-11</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -112,12 +282,12 @@
    <slot>preview()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>353</x>
-     <y>28</y>
+     <x>10</x>
+     <y>239</y>
     </hint>
     <hint type="destinationlabel">
      <x>331</x>
-     <y>-12</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -128,12 +298,12 @@
    <slot>deploy()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>551</x>
-     <y>36</y>
+     <x>63</x>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
      <x>580</x>
-     <y>-12</y>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -144,12 +314,12 @@
    <slot>upload_photos()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>733</x>
-     <y>36</y>
+     <x>63</x>
+     <y>148</y>
     </hint>
     <hint type="destinationlabel">
-     <x>778</x>
-     <y>-13</y>
+     <x>599</x>
+     <y>0</y>
     </hint>
    </hints>
   </connection>
@@ -160,11 +330,11 @@
    <slot>edit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>858</x>
-     <y>21</y>
+     <x>58</x>
+     <y>45</y>
     </hint>
     <hint type="destinationlabel">
-     <x>841</x>
+     <x>599</x>
      <y>3</y>
     </hint>
    </hints>
@@ -173,15 +343,63 @@
    <sender>pushButton_6</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>reload()</slot>
+   <slot>read()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>249</x>
-     <y>19</y>
+     <x>64</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>243</x>
      <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>write()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>63</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>304</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_explorer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>45</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>19</x>
+     <y>284</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_9</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_album()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>27</x>
+     <y>119</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>0</x>
+     <y>135</y>
     </hint>
    </hints>
   </connection>
@@ -192,6 +410,9 @@
   <slot>deploy()</slot>
   <slot>upload_photos()</slot>
   <slot>edit()</slot>
-  <slot>reload()</slot>
+  <slot>read()</slot>
+  <slot>write()</slot>
+  <slot>open_explorer()</slot>
+  <slot>open_album()</slot>
  </slots>
 </ui>
