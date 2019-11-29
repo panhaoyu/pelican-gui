@@ -1,9 +1,11 @@
 import os
+import shutil
 import typing
 import asyncio
 import itertools
 import functools
 import pelican
+from pelican.contents import Article as _Article
 import pelican.settings
 import settings
 
@@ -28,15 +30,29 @@ class Pelican(object):
         context['static_links'] = set()
         context['static_content'] = {}
         context['localsiteurl'] = self.settings['SITEURL']
-        generators = [
-            cls(
-                context=context,
-                settings=self.settings,
-                path=self.pelican.path,
-                theme=self.pelican.theme,
-                output_path=self.pelican.output_path,
-            ) for cls in self.pelican.get_generator_classes()
-        ]
+        try:
+            generator_classes = self.pelican.get_generator_classes()
+            generators = [
+                cls(
+                    context=context,
+                    settings=self.settings,
+                    path=self.pelican.path,
+                    theme=self.pelican.theme,
+                    output_path=self.pelican.output_path,
+                ) for cls in generator_classes
+            ]
+        except EOFError:
+            shutil.rmtree(self.pelican.settings['CACHE_PATH'])
+            generator_classes = self.pelican.get_generator_classes()
+            generators = [
+                cls(
+                    context=context,
+                    settings=self.settings,
+                    path=self.pelican.path,
+                    theme=self.pelican.theme,
+                    output_path=self.pelican.output_path,
+                ) for cls in generator_classes
+            ]
         for generator in generators:
             if isinstance(generator, pelican.generators.ArticlesGenerator):
                 self.articles_generator = generator
@@ -92,3 +108,8 @@ class Pelican(object):
         articles.extend(self.articles_generator.articles)
         articles.extend(self.articles_generator.drafts)
         return articles
+
+    def get_article(self, permalink: int) -> _Article:
+        for article in self.articles:
+            if int(article.metadata['permalink']) == permalink:
+                return article

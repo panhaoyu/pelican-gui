@@ -19,9 +19,25 @@
     </ul>
 </nav>
 
-<div class="body m-4">
-    {% block body %}
-    {% endblock %}
+<div class="row">
+    <div class="list-group col-2 p-3 pl-4 text-center">
+
+        <script>
+            async function updatePage() {
+                await fetch('{% url "console:update" %}');
+                location.reload();
+            }
+        </script>
+        <a class="list-group-item list-group-item-action" href="javascript: updatePage()">更新博客</a>
+        {% block sidebar %}
+        {% endblock %}
+    </div>
+
+    <div class="col-10 body p-3 pr-4">
+        {% block body %}
+        {% endblock %}
+    </div>
+
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>

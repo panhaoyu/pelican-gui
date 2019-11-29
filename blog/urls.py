@@ -3,5 +3,5 @@ from . import views
 
 app_name = 'blog'
 urlpatterns = [
-    path('article/<int:permalink>/', views.article, name='article'),
+    path('article/<int:permalink_id>/', views.article, name='article'),
 ]

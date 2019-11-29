@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse
+import os
+from django.shortcuts import render, redirect, reverse, HttpResponse
 import core
 import settings
 
@@ -16,3 +17,14 @@ def index(request):
         'headers': headers,
         'articles': articles,
     })
+
+
+def update(request):
+    core.pelican.read(local=True)
+    return HttpResponse(True)
+
+
+def edit(request, permalink_id):
+    path = core.pelican.get_article(permalink_id).source_path
+    os.popen(f'"{settings.EDITOR_PATH}" "{path}"')
+    return redirect('blog:article', permalink_id=permalink_id)
