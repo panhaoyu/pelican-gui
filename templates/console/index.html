@@ -1,4 +1,4 @@
-{% extends 'console/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}首页{% endblock %}
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
         {% for article in articles %}
-            <tr>
+            <tr onclick="location.href='{% url 'blog:article' article.0 %}'">
                 {% for cell in article %}
                     <td>{{ cell }}</td>
                 {% endfor %}

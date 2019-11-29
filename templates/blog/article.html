@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}博文{{ article.metadata.permalink }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'blog/article.css' %}">
+{% endblock %}
+
+{% block body %}
+    {{ article.content |safe }}
+{% endblock %}
+

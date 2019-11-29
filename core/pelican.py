@@ -22,7 +22,7 @@ class Pelican(object):
         context: dict = self.settings.copy()
         if local:
             context.update({
-                'SITEURL': 'http://localhost'
+                'SITEURL': 'http://localhost/blog/',
             })
         context['generated_content'] = {}
         context['static_links'] = set()
