@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'C:\Users\wolf\PycharmProjects\pelican-gui\ui\source\main_window.ui',
 # licensing of 'C:\Users\wolf\PycharmProjects\pelican-gui\ui\source\main_window.ui' applies.
 #
-# Created: Wed Nov 27 16:21:56 2019
+# Created: Sat Nov 30 09:56:04 2019
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
